@@ -16,33 +16,62 @@ class Plugin extends Extension {
 	 */
 	public static $instance;
 
-	/**
-	 * Include any files.
-	 *
-	 * @return void
-	 */
-	public function includes() {
-//        require  GROUNDHOGG_EXTENSION_PATH . '/includes/functions.php';
-	}
-
+	public function get_download_id() {}
+	public function includes() {}
 	/**
 	 * Init any components that need to be added.
 	 *
 	 * @return void
 	 */
 	public function init_components() {
+
 		$this->installer = new Installer();
 		$this->updater   = new Updater();
 		$this->roles     = new Roles();
 	}
 
 	/**
-	 * Get the ID number for the download in EDD Store
-	 *
-	 * @return int
+	 * Extended from abstract class. Enqueues automatically on groundhogg admin react app script registration hook
 	 */
-	public function get_download_id() {
-		// TODO: Implement get_download_id() method.
+	public function register_react_assets() {
+		wp_register_script( 'groundhogg-extension-name-script', GROUNDHOGG_EXTENSION_ASSETS_URL . 'index.js', [ 'groundhogg-admin' ], GROUNDHOGG_EXTENSION_VERSION );
+
+		add_action( 'groundhogg/admin/scripts', function( $handles ) {
+			$handles[] = 'groundhogg-extension-name-script';
+			return $handles;
+		 } );
+	}
+
+	public function register_settings_tabs( $tabs ) {
+		$tabs['custom_integration'] = [
+			'id'    => 'custom_integration',
+			'title' => _x( 'Custom Stuff', 'settings tabs', 'groundhogg-extension' ),
+			'cap'   => 'manage_options'
+		];
+
+		return $tabs;
+	}
+
+	public function register_settings( $settings ) {
+		$settings['gh_extension_setting_map'] = [
+			'id'      => 'gh_extension_setting_map',
+			'section' => 'custom_integration_section',
+			'label'   => _x( 'Maybe an address picker on a Google Map?', 'settings', 'groundhogg-extension' ),
+			'desc'    => _x( 'Choose a selection from this map to pick a custom location.', 'settings', 'groundhogg-extension' ),
+			'type'    => 'map', // See /src examples for adding a custom component for a Map to the component mapper.
+		];
+
+		return $settings;
+	}
+
+	public function register_settings_sections( $sections ) {
+		$sections['custom_integration_section'] = [
+			'id'       => 'custom_integration_section',
+			'title'    => _x( 'Integration Section', 'integration section', 'groundhogg-extension' ),
+			'tab'      => 'custom_integration',
+		];
+
+		return $sections;
 	}
 
 	/**

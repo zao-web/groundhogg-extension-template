@@ -1,0 +1,63 @@
+{
+	"name": "groundhogg-extension",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "src/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"check-engines": "wp-scripts check-engines",
+		"check-licenses": "wp-scripts check-licenses",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"lint:md": "wp-scripts lint-md",
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"packages-update": "wp-scripts packages-update",
+		"start": "wp-scripts start",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js",
+		"wp-env": "wp-env"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	],
+	"devDependencies": {
+		"@wordpress/babel-preset-default": "^4.17.0",
+		"@wordpress/env": "^2.0.0",
+		"@wordpress/eslint-plugin": "^7.2.0",
+		"@wordpress/scripts": "^12.4.0",
+		"autoprefixer": "^9.8.6",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^10.1.0",
+		"babel-loader": "^8.1.0",
+		"clsx": "latest",
+		"cross-env": "^7.0.2",
+		"css-loader": "^4.3.0",
+		"eslint": "^7.9.0",
+		"eslint-config-google": "^0.14.0",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"lodash": "^4.17.20",
+		"mini-css-extract-plugin": "^0.9.0",
+		"node-sass": "^4.14.1",
+		"postcss-loader": "^4.0.1",
+		"radium": "^0.26.0",
+		"raw-loader": "^4.0.1",
+		"sass-loader": "^10.0.2",
+		"style-loader": "^1.2.1",
+		"webpack": "^4.44.1",
+		"webpack-cli": "^3.3.12"
+	},
+	"dependencies": {
+		"@material-ui/core": "^4.11.0",
+		"@material-ui/icons": "^4.9.1",
+		"@wordpress/api-fetch": "3.19.0",
+		"@wordpress/compose": "3.9.0",
+		"@wordpress/data": "^4.23.0",
+		"@wordpress/element": "^2.17.0",
+		"@wordpress/hooks": "2.9.0",
+		"@wordpress/i18n": "3.11.0",
+		"classnames": "2.2.6"
+	}
+}
